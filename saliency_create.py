@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  8 10:47:35 2019
-
-@author: S.S.HARI
-"""
 import tensorflow as tf
 import numpy as np
 import os

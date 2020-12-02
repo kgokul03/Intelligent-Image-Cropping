@@ -1,23 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  8 09:18:33 2019
 
-@author: S.S.HARI
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Oct  3 14:31:51 2019
-
-@author: S.S.HARI
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct  2 01:16:58 2019
-
-@author: S.S.HARI
-"""
 from PIL import Image
 import numpy as np
 import os
@@ -34,6 +15,7 @@ def crop_image(folder,path):
     
     image.load()
     width, height = image.size
+    print("Dimention:", end=' ') 
     print(width,height)
     image_data = np.asarray(image)
 #print(image_data)
@@ -50,11 +32,17 @@ def crop_image(folder,path):
                 max=current
         im = image_data[:,width-height:width]
         current = np.count_nonzero(im>150)
-        print(current,width-height)
+#        print("LAST OUTLINE:", end=' ') 
+#        print(current,width-height)
         if(current>max):
             pos=width-height
             max=current
-        print(max,pos)
+        print("No. of White pixels:", end=' ') 
+        print(max)
+        print("Landscape -> left:", end=' ') 
+        print(pos, end=' ')
+        print("right:", end=' ') 
+        print(pos+height)
         left = pos
         top = 0
         bottom = height
@@ -68,9 +56,17 @@ def crop_image(folder,path):
                 max=current
         im = image_data[height-width:height,:]
         current = np.count_nonzero(im>150)
+#        print("LAST OUTLINE:", end=' ') 
+#        print(current,height-width)
         if(current>max):
             pos=height-width
             max=current
+        print("No. of White pixels:", end=' ') 
+        print(max)
+        print("Portrait -> top:", end=' ') 
+        print(pos, end=' ')
+        print("bottom:", end=' ') 
+        print(pos+width)
         left = 0
         top = pos
         bottom = pos+width
@@ -79,4 +75,4 @@ def crop_image(folder,path):
         flag = 1
     if(flag==0):                                              
         cropped = rgb.crop((left,top,right,bottom))
-        cropped.save(os.path.join(cropped_folder,path))
+    cropped.save(os.path.join(cropped_folder,path))
