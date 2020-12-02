@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  8 08:38:02 2019
 
-@author: S.S.HARI
-"""
 import os
 import argparse
 import sys
@@ -23,9 +18,14 @@ def main(args):
         
     if args.rgb_folder:
         rgb_pths = os.listdir(args.rgb_folder)
+        count = 1
         for rgb_pth in rgb_pths:
+            print("IMAGE:",end = ' ')
+            print(count)
+            count=count+1
             saliency(args.rgb_folder,rgb_pth)
             crop_image(args.rgb_folder,rgb_pth)
+            print()
 			#print(os.path.join(args.rgb_folder,rgb_pth))
 
     else:
