@@ -1,13 +1,30 @@
-This is a CIP Project 
-# Intelligent-Image-Cropping
-Automatic Image Cropping based on the focus of the image
+# Thumbnail enhancer
 
-trained model file - link will be uploaded 
+Run the code by:
 
-Command to run the file  
+For whole folder
 ```bash
-python command.py --rgb_folder=./test 
+python command.py --rgb_folder=./test
+```
+For single image
+```bash
+python command.py --rgb=sample.jpg
 ```
 
+# MAE:
 
-have a nice Day :)
+For a folder:
+```bash
+python command.py --rgb_folder=./eval
+```
+
+Paste the generated ouput in generated_sal folder and run the below command. This is
+because, we would find MAE only if Ground Truth image is available.
+```bash
+python mae.py --rgb_folder=./generated_sal
+```
+For a file:
+```bash
+python command.py --rgb=sample.jpg
+python mae.py --rgb=sample_out.jpg
+```
